@@ -34,17 +34,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_STUDENT);
+        db.execSQL(SQL_CREATE_TABLE_STUDENT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL(SQL_DELETE_TABLE_STUDENT);
-        onCreate(sqLiteDatabase);
+        db.execSQL(SQL_DELETE_TABLE_STUDENT);
+        onCreate(db);
     }
 
     //adding student data
-    private void addStudent(Student Student) {
+    void addStudent(Student Student) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_NAME_AGE, Student.getAge());
         values.put(DatabaseHelper.COLUMN_NAME_NAME, Student.getName());

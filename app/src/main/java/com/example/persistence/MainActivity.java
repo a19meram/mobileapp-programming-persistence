@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +32,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String stringName = name.getText().toString();
-                String integerAge = age.getText().toString();
+                Integer integerAge = Integer.valueOf(age.getText().toString());
                 String stringProgram = program.getText().toString();
+
+                DatabaseHelper helperClass = new DatabaseHelper(MainActivity.this);
+                Student studentClass = new Student(stringName, stringProgram, integerAge);
+                helperClass.addStudent(studentClass);
+                Toast.makeText(MainActivity.this, "grattis den är addad", Toast.LENGTH_LONG).show();
+
+                finish();
+                startActivity(getIntent());
+
+
             }
         });
 
