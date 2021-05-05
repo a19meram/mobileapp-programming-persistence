@@ -13,6 +13,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String COLUMN_NAME_AGE = "age";
     static final String COLUMN_NAME_NAME = "name";
     static final String COLUMN_NAME_PROGRAM = "program";
+    private SQLiteDatabase sqLiteDatabase;
+
+    static final String SQL_CREATE_TABLE_STUDENT=
+            // "CREATE TABLE mountain (id INTEGER PRIMARY KEY, name TEXT, height INT)"
+            "CREATE TABLE " + TABLE_NAME + " (" +
+                    COLUMN_NAME_AGE + " INTEGER PRIMARY KEY," +
+                    COLUMN_NAME_NAME + " TEXT," +
+                    COLUMN_NAME_PROGRAM + " INT)";
+
+    static final String SQL_DELETE_TABLE_MOUNTAIN =
+            // "DROP TABLE IF EXISTS mountain"
+            "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
