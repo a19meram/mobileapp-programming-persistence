@@ -1,5 +1,6 @@
 package com.example.persistence;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -26,6 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // "DROP TABLE IF EXISTS mountain"
             "DROP TABLE IF EXISTS " + TABLE_NAME;
 
+    //Constructor added
+    DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
 
