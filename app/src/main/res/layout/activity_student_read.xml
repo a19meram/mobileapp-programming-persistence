@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".StudentRead">
 
+    <ListView
+        android:id="@+id/my_listview"
+        android:layout_width="303dp"
+        android:layout_height="351dp"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="190dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
