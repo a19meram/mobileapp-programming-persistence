@@ -2,8 +2,12 @@ package com.example.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -53,5 +57,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(DatabaseHelper.TABLE_NAME, null, values);
     }
 
+    public List<Student> getStudentsList(){
+        String sql = "SELECT * FROM" + TABLE_NAME;
+        sqLiteDatabase = this.getReadableDatabase();
+        List<Student> laddaStudent = new ArrayList<>();
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+        if (cursor.moveToFirst()){
+            do {
+                String age = cursor.getString(0);
+                String name = cursor.getString(1);
+                String program = cursor.getString(2);
+                laddaStudent.add(new Student(age,name,program));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return laddaStudent;
+    }
 
 }

@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String stringName = name.getText().toString();
-                Integer integerAge = Integer.valueOf(age.getText().toString());
+                String stringAge = age.getText().toString();
                 String stringProgram = program.getText().toString();
 
                 DatabaseHelper helperClass = new DatabaseHelper(MainActivity.this);
-                Student studentClass = new Student(stringName, stringProgram, integerAge);
+                Student studentClass = new Student(stringName, stringProgram, stringAge);
                 helperClass.addStudent(studentClass);
                 Toast.makeText(MainActivity.this, "grattis den är addad", Toast.LENGTH_LONG).show();
 

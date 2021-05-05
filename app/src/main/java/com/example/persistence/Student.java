@@ -3,10 +3,10 @@ package com.example.persistence;
 public class Student {
     String name;
     String program;
-    Integer age;
+    String age;
 
 
-    public Student(String name, String program, Integer age) {
+    public Student(String name, String program, String age) {
         this.name = name;
         this.program = program;
         this.age = age;
@@ -29,7 +29,7 @@ public class Student {
         return program;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 }
