@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".StudentRead">
 
-    <ListView
-        android:id="@+id/my_listview"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="303dp"
         android:layout_height="351dp"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="190dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
