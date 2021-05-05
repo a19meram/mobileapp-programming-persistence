@@ -1,5 +1,6 @@
 package com.example.persistence;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -23,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_NAME_NAME + " TEXT," +
                     COLUMN_NAME_PROGRAM + " INT)";
 
-    static final String SQL_DELETE_TABLE_MOUNTAIN =
+    static final String SQL_DELETE_TABLE_STUDENT =
             // "DROP TABLE IF EXISTS mountain"
             "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -33,11 +34,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_STUDENT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        sqLiteDatabase.execSQL(SQL_DELETE_TABLE_STUDENT);
+        onCreate(sqLiteDatabase);
     }
+
+    //adding student data
+    private void addStudent(Student Student) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.COLUMN_NAME_AGE, Student.getAge());
+        values.put(DatabaseHelper.COLUMN_NAME_NAME, Student.getName());
+        values.put(DatabaseHelper.COLUMN_NAME_PROGRAM, Student.getProgram());
+        sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.insert(DatabaseHelper.TABLE_NAME, null, values);
+    }
+
+
 }
